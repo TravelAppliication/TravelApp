@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>Travel</servlet-name>
+		<servlet-class>com.travel.TravelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Travel</servlet-name>
+		<url-pattern>/travel</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>com.travel.RegisterServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>FetchServlet</servlet-name>
+		<servlet-class>com.travel.FetchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FetchServlet</servlet-name>
+		<url-pattern>/fetch</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ValidateServlet</servlet-name>
+		<servlet-class>com.travel.ValidateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ValidateServlet</servlet-name>
+		<url-pattern>/validate</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>login.html</welcome-file>
+	</welcome-file-list>
+</web-app>
