@@ -32,8 +32,24 @@ radio:HOVER {
 	font : bold 25px garamond; 
 }
 </style>
+<% 
+response.setHeader("Cache-Control", "no-cache"); //Forces caches to obtain a new copy of the page from the origin server 
+response.setHeader("Cache-Control", "no-store"); //Directs caches not to store the page under any circumstance 
+response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale" 
+response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility 
+%>
+<%if(session.getAttribute("mailid")==null)
+{
+response.sendRedirect("login.jsp");
+}
+%>
+<%
+String umail= (String) session.getAttribute("mailid");
+out.println("welcome "+ umail);
+%>
 </head>
 <body>
+<form action = "/session" method = "post">
 <input type ="submit" value = "Logout" onclick="window.location.href='index.html'" class ="logout" width="48" height="48"/>
 <img src = "logo.png" style="width:170px; height:80px;">
 <hr/>
@@ -44,5 +60,6 @@ radio:HOVER {
 <input type = "radio" name = "place" id = "kerala"> Kerala <br>
 <input type = "radio" name = "place" id = "hyderabad"> Hyderabad <br>
 <input type = "radio" name = "place" id = "karnataka"> Karnataka 
+</form>
 </body>
 </html>

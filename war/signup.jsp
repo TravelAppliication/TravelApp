@@ -48,7 +48,6 @@ height:667px;
 font: bold 20px garmond;
 }
 </style>
-</head>
 
 <script type="text/javascript">
 function checkValidate()
@@ -71,17 +70,19 @@ function checkValidate()
 			return true;
 		}
 }
-function validate() {  
-	var msg;  
-	if(document.f1.password.value.length<8){  
-	msg="Enter 8 characters";  
-	}  
-	else {
-		msg=null;
-	}
-	document.getElementById('location').innerText=msg;  
-	 }  
 </script>
+<% 
+response.setHeader("Cache-Control", "no-cache"); //Forces caches to obtain a new copy of the page from the origin server 
+response.setHeader("Cache-Control", "no-store"); //Directs caches not to store the page under any circumstance 
+response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale" 
+response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility 
+%>
+<%if(session.getAttribute("mailid")!=null)
+{
+response.sendRedirect("home.jsp");
+}
+%>
+</head>
 <body>
 <div class="sign">
 <a class="back" href="index.html">Back</a><br><br>
@@ -91,8 +92,7 @@ function validate() {
 <label> Name: </label><input type="text" name="name" id="name" required placeholder = "Enter Name"> <br><br>
 <label> Email: </label><input type="email" name="email" id="email" required placeholder = "Enter Email"><br><br>
 <label> Password: </label>
-<input type="password" name="password" class = "pass" onkeyup = "validate()" id="password" required placeholder = "Enter Password">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="location" ></span><br><br>  
+<input type="password" name="password" class = "pass" id="password" required pattern=".{8,}" title="Enter atleast 8 characters" placeholder = "Enter Password"> <br><br> 
 <label>Re-Enter Password: </label> <input type="password" name="password1" id="repass" required placeholder = "Re-Enter Password"><br><br>
 <label>Gender: </label><input type="radio" name="gender" id="gender" required> Male
 <input type="radio" name="gender"> Female<br><br>

@@ -48,6 +48,17 @@ font: bold 20px garmond;
 font-size:20px;
 }
 </style>
+<% 
+response.setHeader("Cache-Control", "no-cache"); //Forces caches to obtain a new copy of the page from the origin server 
+response.setHeader("Cache-Control", "no-store"); //Directs caches not to store the page under any circumstance 
+response.setDateHeader("Expires", 0); //Causes the proxy cache to see the page as "stale" 
+response.setHeader("Pragma", "no-cache"); //HTTP 1.0 backward compatibility 
+%>
+<%if(session.getAttribute("mailid")!=null)
+{
+response.sendRedirect("home.jsp");
+} 
+%>
 </head>
 <body>
 <div class= "log">
@@ -59,7 +70,7 @@ font-size:20px;
 <input type = "email" name = "email" id = "email" placeholder = "Enter Email Id" required><br><br>
 <label>Password:</label> 
 <input type = "password" name = "password" id = "password" placeholder = "Enter password" required><br><br>
-<a class="pass" href="forget.jsp">Forgot Password?</a><br><br>
+<a class="pass" href="Forget.jsp">Forgot Password?</a><br><br>
 <input type = "submit" class="button" value = "Login">
 </fieldset>
 </form>

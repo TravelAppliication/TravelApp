@@ -3,5 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/User/Downloads/Java.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.7.0_79/src.zip"/>
+	<classpathentry kind="lib" path="C:/Users/User/Downloads/jdk-7u79-windows-x64-demos.zip"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

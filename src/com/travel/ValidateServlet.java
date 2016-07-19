@@ -24,22 +24,26 @@ public class ValidateServlet extends HttpServlet {
 			Query q = new Query("User");
 		    PreparedQuery pq = ds.prepare(q);
 		    Iterable<Entity> it = pq.asIterable();
-		    Boolean ok = false;
+		    boolean valid = false;
 		    for(Entity ent: it)
 		    {
 		    	
 		    	if(ent.getProperty("Email").equals(email) && ent.getProperty("Password").equals(pass))
 		    	{
-		    		ok = true;
+		    		valid = true;
 		    	}
 		    }
-		    if(ok)
+		    if(valid)
 		    {
-		    RequestDispatcher dis=request.getRequestDispatcher("home.jsp");
-		    dis.forward(request, response);
+		    	HttpSession session = request.getSession();
+		    	String uemail = request.getParameter("email");
+		    	session.setAttribute("mailid",uemail);
+		    	response.sendRedirect("home.jsp");
 		    }
 		    else
 		    {
+		    PrintWriter out = response.getWriter(); 
+		    out.println("<html><head><script>window.alert('Enter Valid Mail Id and Password');</script></head></html>");
 		    RequestDispatcher dis=request.getRequestDispatcher("login.jsp");
 		    dis.forward(request, response);
 		    }
